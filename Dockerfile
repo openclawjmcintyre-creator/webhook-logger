@@ -1,4 +1,4 @@
-FROM python:3.12-slim AS builder
+FROM python:3.12-slim
 
 WORKDIR /app
 
@@ -11,9 +11,14 @@ COPY src/ ./src/
 COPY static/ ./static/
 COPY templates/ ./templates/
 
-# Create non-root user
-RUN useradd -m -u 1000 appuser
+# Create non-root user and set ownership
+RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
 USER appuser
 
+# Flask configuration
+ENV FLASK_APP=src/app.py
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV FLASK_RUN_PORT=5000
+
 EXPOSE 5000
-CMD ["python", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000"]
+CMD ["python", "-m", "flask", "run"]
