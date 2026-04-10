@@ -4,7 +4,10 @@ import os
 from flask import Flask, request, jsonify, render_template, g
 from src.models import init_db, insert_webhook, get_recent_webhooks, get_webhook_by_id
 
-app = Flask(__name__)
+# Explicitly set template and static folders
+template_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'templates'))
+static_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'static'))
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 # Initialize DB on startup
 init_db()
