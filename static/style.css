@@ -1,0 +1,128 @@
+/* Webhook Logger CSS */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background: #1a1a2e;
+    color: #eee;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #0f3460;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+}
+
+main {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.webhook-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.webhook-table thead {
+    background: #0f3460;
+}
+
+.webhook-table th,
+.webhook-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #1a1a2e;
+}
+
+.webhook-table th {
+    color: #eee;
+    font-weight: 600;
+}
+
+.webhook-table tbody tr:hover {
+    background: #1a1a2e;
+}
+
+.webhook-table a {
+    color: #e94560;
+    text-decoration: none;
+}
+
+.webhook-table a:hover {
+    text-decoration: underline;
+}
+
+.body-cell {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.count {
+    margin-top: 15px;
+    color: #666;
+    font-size: 14px;
+}
+
+.no-data {
+    color: #666;
+    text-align: center;
+    padding: 40px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+footer a {
+    color: #e94560;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .webhook-table {
+        font-size: 12px;
+    }
+
+    .body-cell {
+        max-width: 100px;
+    }
+}

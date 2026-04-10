@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Logger</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Webhook Logger</h1>
+            <p class="subtitle">Recent webhooks (last 50)</p>
+        </header>
+
+        <main>
+            {% if webhooks %}
+            <table class="webhook-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Timestamp</th>
+                        <th>Method</th>
+                        <th>Source</th>
+                        <th>Body</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for webhook in webhooks %}
+                    <tr>
+                        <td><a href="/logs/{{ webhook.id }}">{{ webhook.id }}</a></td>
+                        <td>{{ webhook.timestamp }}</td>
+                        <td>{{ webhook.method }}</td>
+                        <td>{{ webhook.ip_address or 'N/A' }}</td>
+                        <td class="body-cell">
+                            {% if webhook.body|length > 50 %}
+                            {{ webhook.body[:50] }}...
+                            {% else %}
+                            {{ webhook.body }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p class="count">Total: {{ webhooks|length }} webhooks</p>
+            {% else %}
+            <p class="no-data">No webhooks received yet.</p>
+            {% endif %}
+        </main>
+
+        <footer>
+            <p>Webhook Logger v1.0 | <a href="/health">Health</a></p>
+        </footer>
+    </div>
+</body>
+</html>
